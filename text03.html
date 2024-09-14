@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let startTime=new Date();
+</script>
+<style>
+    body{
+        border: 3px solid rgb(224, 145, 176);
+    }
+    header{
+        height:35%;
+        background-color:rgb(219, 223, 172);
+        text-align: center;
+    }
+    div{
+        height:35%;
+        background-color:rgb(172, 223, 195);
+        text-align: center;
+    }
+    footer{
+        height:30%;
+        background-color:rgb(172, 200, 223);
+    }
+</style>
+<body>
+    <header>
+        <center>
+            one
+        </center>
+    </header>
+    <div>
+            two
+    </div>
+    <footer>
+        <center>
+            three
+        </center>
+    </footer>
+    <script>
+        window.alert("this is third homework")
+        let body=document.querySelector('body');
+        body.style.height=innerHeight-30+'px';
+        let timer=new Date();
+        let randomMath=Math.floor(Math.random()*100);
+        let divDom=document.querySelector("div");
+            divDom.innerText="生成的随机数:"+randomMath;
+        console.log("randomMath");
+        let headerDom=document.querySelector("header");
+        headerDom.textContent="耗时："+(new Date()-startTime)+'ms';
+    </script>
+</body>
+</html>
