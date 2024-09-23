@@ -2,56 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            text-align: center;
+        }
+        #one{
+            background-color: rgb(237, 250, 190);
+        }
+        #two{
+            background-color: rgb(197, 175, 129);
+        }
+        #three{
+            background-color: rgb(136, 168, 194);
+        }
+        footer {
+            text-align: center;
+            background-color: rgb(243, 188, 243);
+        }
+    </style>
 </head>
-<script>
-    let startTime=new Date();
-</script>
-<style>
-    body{
-        border: 3px solid rgb(224, 145, 176);
-    }
-    header{
-        height:35%;
-        background-color:rgb(219, 223, 172);
-        text-align: center;
-    }
-    div{
-        height:35%;
-        background-color:rgb(172, 223, 195);
-        text-align: center;
-    }
-    footer{
-        height:30%;
-        background-color:rgb(172, 200, 223);
-    }
-</style>
 <body>
-    <header>
-        <center>
-            one
-        </center>
-    </header>
-    <div>
-            two
-    </div>
-    <footer>
-        <center>
-            three
-        </center>
-    </footer>
+    <p id='one'>单词</p>
+    <p id='two'>发音</p>
+    <p id='three'>中文</p>
+    <button id="firstButton">载入单词</button>
+    <button id="secondButton">输出单词</button>
     <script>
-        window.alert("this is third homework")
-        let body=document.querySelector('body');
-        body.style.height=innerHeight-30+'px';
-        let timer=new Date();
-        let randomMath=Math.floor(Math.random()*100);
-        let divDom=document.querySelector("div");
-            divDom.innerText="生成的随机数:"+randomMath;
-        console.log("randomMath");
-        let headerDom=document.querySelector("header");
-        headerDom.textContent="耗时："+(new Date()-startTime)+'ms';
+        function select(selector){
+            let dom =document.querySelector(selector);
+            return dom;
+        }
+        let cet6String='';
+        let loadCet=select('button#firstButton');
+        let randWord=select('button#secondButton');
+    loadCet.onclick=function(){
+    fetch('cet6.txt')
+    .then(res=>res.text())
+    .then(txt=>cet6String=txt);
+    };
+    putCet.onclick=function(){
+        if(cet6String=''){
+            let putIt="请先输入单词"
+            select('footer').textContent=putIt;
+        }else{
+            let arr=cet6String.split('\r\n');
+            let rand=Math.floor(Math.random()*arr.lrngth);
+            let str=arr[rand];
+            let begin=str.indexOf('\t');
+            let end=str.lastIndexOf('\t');
+            let one=str.slice(0,begin);
+            let two=str.slice(begin+1,end);
+            let three=str.slice(end+1);
+            select('p#one').textContent=one;
+            select('p#two').textContent=two;
+            select('p#three').textContent=three;
+        }
+    }
     </script>
 </body>
+<footer>
+    9.23
+</footer>
 </html>
